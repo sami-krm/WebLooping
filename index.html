@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebLooping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="top">
+            <div class="brand"><i></i>WebLooping</div>
+            <details class="menu">
+                <summary>Fichier ▾</summary>
+                <div class="items">
+                    <button data-act="new">Nouveau modèle</button>
+                    <button data-act="example">Charger l'exemple</button>
+                    <button data-act="open">Ouvrir un modèle (.json)…</button>
+                    <button data-act="save">Enregistrer le modèle (.json)</button>
+                </div>
+            </details>
+            <details class="menu">
+                <summary>Exporter ▾</summary>
+                <div class="items">
+                    <button data-act="png">Image PNG du modèle</button>
+                    <button data-act="svg">Image SVG (vectorielle)</button>
+                    <button data-act="copyimg">Copier l'image dans le presse-papiers</button>
+                    <hr>
+                    <button data-act="sqlfile">Script SQL (.sql) pour le SGBD choisi</button>
+                    <button data-act="sqlall">Scripts SQL pour tous les SGBD (.sql)</button>
+                    <button data-act="copysql">Copier le script SQL</button>
+                    <button data-act="mldtxt">MLD en texte (.txt)</button>
+                </div>
+            </details>
+            <button data-act="undo" title="Annuler (Ctrl+Z)">↶</button>
+            <button data-act="redo" title="Rétablir (Ctrl+Y)">↷</button>
+            <span class="sep"></span>
+            <label>Notation <select id="notation">
+                    <option value="merise">Merise (E/A)</option>
+                    <option value="uml">UML (classes)</option>
+                </select></label>
+            <label>SGBD <select id="dbms"></select></label>
+            <button data-act="custom" title="Paramétrer le SGBD personnalisé">⚙ SGBD perso</button>
+            <button data-act="style" title="Présentation">🎨 Présentation</button>
+            <span class="sep"></span>
+            <span style="font-size:12px;color:#94a3b8">Vues :</span>
+            <label><input type="checkbox" data-view="mcd" checked>MCD</label>
+            <label><input type="checkbox" data-view="mcd2">Vue 2</label>
+            <label><input type="checkbox" data-view="mld" checked>MLD</label>
+            <label><input type="checkbox" data-view="sql" checked>SQL</label>
+        </div>
+        <div id="main">
+            <div id="tools"></div>
+            <div id="work">
+                <div id="colA">
+                    <div class="pane" id="p-mcd">
+                        <div class="phead"><b>Modèle conceptuel</b><button data-z="-">−</button><span
+                                class="z"></span><button data-z="+">+</button><button data-z="1">100 %</button><button
+                                data-z="fit">Ajuster</button></div>
+                        <div class="canvas grid"></div>
+                    </div>
+                    <div class="pane hidden" id="p-mcd2">
+                        <div class="phead"><b>Vue 2</b><button data-z="-">−</button><span class="z"></span><button
+                                data-z="+">+</button><button data-z="1">100 %</button><button
+                                data-z="fit">Ajuster</button></div>
+                        <div class="canvas grid"></div>
+                    </div>
+                </div>
+                <div id="splitter"></div>
+                <div id="colB">
+                    <div class="pane" id="p-mld">
+                        <div class="phead"><b>MLD (temps réel)</b><select id="mldmode">
+                                <option value="text">Textuel</option>
+                                <option value="cards">Tables</option>
+                            </select><button data-fz="-">A−</button><button data-fz="+">A+</button></div>
+                        <div class="textpane" id="mld"></div>
+                    </div>
+                    <div class="pane" id="p-sql">
+                        <div class="phead"><b>Script SQL — DDL</b><span id="sqllabel"></span><button
+                                data-act="copysql">Copier</button><button data-act="sqlfile">.sql</button><button
+                                data-fz="-">A−</button><button data-fz="+">A+</button></div>
+                        <div class="textpane">
+                            <pre id="sql"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="insp"></div>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="box">
+            <div class="mh"></div>
+            <div class="mb"></div>
+            <div class="mf"></div>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <input type="file" id="fileModel" accept=".json,application/json" hidden>
+    <input type="file" id="fileImg" accept="image/*" hidden>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
