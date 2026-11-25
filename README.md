@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <img src="docs/apercu.png" alt="Éditeur WebLooping : MCD à gauche, MLD et script SQL générés à droite" width="100%">
+</p>
+
+<p align="center">
   <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white">
   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white">
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black">
